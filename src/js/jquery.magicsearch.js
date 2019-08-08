@@ -1,3 +1,12 @@
+/*!
+ * MagicSearch - An input plugin based on jquery
+ */
+/*..........................................................................................................
+Version       Date               Changed By                        Comments
+1.0.4         24 Jan 2019       dingyi1993                         Initial Version from  https://github.com/dingyi1993/jquery-magicsearch under MIT license.
+1.0.5         08 Aug 2019       Hemant                                 Added IE 11 support                                                                   
+...........................................................................................................*/
+
 function _toConsumableArray(arr) {
     return (
       _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
@@ -24,6 +33,7 @@ function _toConsumableArray(arr) {
       return arr2;
     }
   }
+  
   function onlyUnique(value, index, self) {
     return self.indexOf(value) === index;
   }
@@ -810,7 +820,10 @@ function _toConsumableArray(arr) {
           }
         } else {
           var inputVals = _toConsumableArray(
-            inputVal.toLowerCase().split(" ").filter(onlyUnique)
+            inputVal
+              .toLowerCase()
+              .split(" ")
+              .filter(onlyUnique)
           );
   
           var inputData = [];
@@ -1439,11 +1452,9 @@ function _toConsumableArray(arr) {
               options.override || !multi
                 ? options.id
                 : _toConsumableArray(
-                    
-                      (originId ? originId.split(",") : []).concat(
-                        options.id.split(",")
-                      ).filter(onlyUnique)
-                    
+                    (originId ? originId.split(",") : [])
+                      .concat(options.id.split(","))
+                      .filter(onlyUnique)
                   )
             );
             magicSearch.$element.magicsearch(magicSearch.options);
@@ -1488,7 +1499,7 @@ function _toConsumableArray(arr) {
     };
   
     window.MagicSearch = {
-      v: "1.0.2",
+      v: "1.0.5",
       index: 0,
       hasBindBody: false
     };
