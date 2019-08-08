@@ -555,7 +555,7 @@ function _toConsumableArray(arr) {
           $magicsearch_wrapper = $input.parent();
   
         if ($magicsearch_wrapper.attr("data-belong") === "magicsearch") {
-          this.element.style = this.props.style;
+          this.element.style.cssText = this.props.style;
           $input.css({
             margin: $magicsearch_wrapper.css("margin"),
             "padding-top": this.props.styles.paddingTop,
