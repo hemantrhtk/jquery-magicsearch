@@ -24,6 +24,10 @@ function _toConsumableArray(arr) {
       return arr2;
     }
   }
+  function onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
+  }
+  
   (function(factory) {
     "use strict";
   
@@ -806,7 +810,7 @@ function _toConsumableArray(arr) {
           }
         } else {
           var inputVals = _toConsumableArray(
-            new Set(inputVal.toLowerCase().split(" "))
+            inputVal.toLowerCase().split(" ").filter(onlyUnique)
           );
   
           var inputData = [];
@@ -869,7 +873,7 @@ function _toConsumableArray(arr) {
         } else {
           //delete empty input
           var _inputVals = _toConsumableArray(
-            new Set(inputVal.split(" "))
+            inputVal.split(" ").filter(onlyUnique)
           ).filter(function(item) {
             return item !== "";
           });
@@ -1435,11 +1439,11 @@ function _toConsumableArray(arr) {
               options.override || !multi
                 ? options.id
                 : _toConsumableArray(
-                    new Set(
+                    
                       (originId ? originId.split(",") : []).concat(
                         options.id.split(",")
-                      )
-                    )
+                      ).filter(onlyUnique)
+                    
                   )
             );
             magicSearch.$element.magicsearch(magicSearch.options);
