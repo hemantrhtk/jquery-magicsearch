@@ -829,7 +829,7 @@ function _toConsumableArray(arr) {
           for (var _i4 = 0; _i4 < dataJson.length; _i4++) {
             //skip selected
             if (!options.showSelected) {
-              if (idArr.includes(dataJson[_i4][options.id])) {
+              if (idArr.indexOf(dataJson[_i4][options.id]) >= 0) {
                 continue;
               }
             }
@@ -845,7 +845,7 @@ function _toConsumableArray(arr) {
                   dataJson[_i4][options.fields[j]] !== null &&
                   dataJson[_i4][options.fields[j]]
                     .toLowerCase()
-                    .includes(inputData[k].value)
+                    .indexOf(inputData[k].value) >= 0
                 ) {
                   inputData[k].flag = true;
                 }
@@ -966,7 +966,7 @@ function _toConsumableArray(arr) {
             htmlStr += options.disableRule(item) ? "disabled" : "enabled";
   
             if (options.showSelected) {
-              htmlStr += idArr.includes(item[options.id]) ? " selected" : "";
+              htmlStr += idArr.indexOf(item[options.id]) >= 0 ? " selected" : "";
             }
   
             htmlStr += '" data-id="'.concat(
